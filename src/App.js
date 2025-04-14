@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-useState
+import "./App.css"
+import Form from "./Form"
+
 const App = () => {
   return (
     <div>
-    
+    <Form/>
     </div>
   )
 }
