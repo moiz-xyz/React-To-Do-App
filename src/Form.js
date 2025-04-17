@@ -4,6 +4,7 @@ import { CalendarOutlined } from '@ant-design/icons';
 const Form = () => {
   const [task, insert_task] = useState('');
   const [allTasks, getAllTask] = useState([]);
+  const [editIndex , setEditIndex] = useState(null)
 
   const styling = {
     main: {
@@ -88,9 +89,17 @@ const Form = () => {
     e.preventDefault(); 
       getAllTask([...allTasks, { task }]);
       insert_task('');
+      if (editIndex === !null){
+
+      }
    
   };
-
+  const deleteFunction = (index)=>{
+  const copyTasks = [...allTasks];
+  copyTasks.splice(index , 1)
+  getAllTask(copyTasks)
+  }
+  
   return (
     <div style={styling.main}>
       <h2 style={styling.h2}>
@@ -115,12 +124,14 @@ const Form = () => {
             <li key={i} style={styling.li}>
               {t.task}
               <div style={styling.iconContainer}>
-              <EditOutlined />
-                <i style={styling.icon}></i>
+                {/* <button onClick={ ()=>{
+
+                }}>Edit</button> */}
+                <button onClick={ ()=> deleteFunction(i)}>Delete</button>
               </div>
             </li>
           ))}
-        </ul>
+        </ul> 
       </div>
     </div>
   );
